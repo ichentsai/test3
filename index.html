@@ -1,426 +1,446 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AEREN | 空氣感的美學，循環的生命力</title>
-    <meta name="description" content="AEREN - 結合韓國極簡設計與永續科技，創造美觀、耐用且對環境友善的女性包袋。">
-   
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-   
-    <!-- Google Fonts: Noto Sans TC for body, Playfair Display for accents -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-   
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
- 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'aeren-stone': '#F5F5F0', // 溫暖的米灰色背景
-                        'aeren-green': '#4A5D4F', // 品牌主色：深鼠尾草綠
-                        'aeren-text': '#2C2C2C',   // 主要文字色
-                        'aeren-grey': '#8C8C8C',   // 次要文字
-                        'aeren-sand': '#E8E4D9',   // 裝飾色
-                    },
-                    fontFamily: {
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-   
-    <style>
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: #F5F5F0;
-            color: #2C2C2C;
-            scroll-behavior: smooth;
-        }
-        .hero-bg {
-            /* 使用 Unsplash 的極簡風格圖片作為背景 */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-        .fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        /* 自定義捲軸 */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #F5F5F0;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #D1D1D1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4A5D4F;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEREN | 空氣感的美學，循環的生命力</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        aeren: {
+                            50: '#f7f9f9',
+                            100: '#e6f0f2',
+                            200: '#cce3e6',
+                            300: '#a3ced4',
+                            500: '#6ea6ad',
+                            700: '#4a7a80',
+                            900: '#1f3a3d',
+                        },
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
 </head>
-<body class="antialiased selection:bg-aeren-green selection:text-white">
- 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-aeren-stone/90 backdrop-blur-md border-b border-stone-200 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="text-3xl font-serif font-semibold tracking-widest text-aeren-green">AEREN</a>
-                </div>
-               
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-12 items-center">
-                    <a href="#vision" class="text-sm uppercase tracking-widest hover:text-aeren-green transition-colors">品牌願景</a>
-                    <a href="#product" class="text-sm uppercase tracking-widest hover:text-aeren-green transition-colors">產品工藝</a>
-                    <a href="#moat" class="text-sm uppercase tracking-widest hover:text-aeren-green transition-colors">競爭優勢</a>
-                    <a href="#roadmap" class="text-sm uppercase tracking-widest hover:text-aeren-green transition-colors">發展藍圖</a>
-                    <a href="#contact" class="px-6 py-2 border border-aeren-text hover:bg-aeren-text hover:text-white transition-all text-sm uppercase tracking-widest">加入我們</a>
-                </div>
- 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-aeren-text focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-       
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-aeren-stone border-t border-stone-200 absolute w-full">
-            <div class="px-4 pt-4 pb-8 space-y-4 flex flex-col items-center">
-                <a href="#vision" class="block text-sm uppercase tracking-widest hover:text-aeren-green">品牌願景</a>
-                <a href="#product" class="block text-sm uppercase tracking-widest hover:text-aeren-green">產品工藝</a>
-                <a href="#moat" class="block text-sm uppercase tracking-widest hover:text-aeren-green">競爭優勢</a>
-                <a href="#roadmap" class="block text-sm uppercase tracking-widest hover:text-aeren-green">發展藍圖</a>
-            </div>
-        </div>
-    </nav>
- 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center hero-bg text-white">
-        <div class="absolute inset-0 bg-black/10"></div> <!-- Overlay -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <p class="text-sm md:text-base uppercase tracking-[0.3em] mb-4 opacity-90 fade-in-up" style="animation-delay: 0.2s;">Air + Renew</p>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-medium leading-tight mb-8 fade-in-up" style="animation-delay: 0.4s;">
-                空氣感的美學<br>
-                <span class="italic text-3xl md:text-5xl lg:text-6xl">循環的生命力</span>
-            </h1>
-            <p class="text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto leading-relaxed fade-in-up opacity-90" style="animation-delay: 0.6s;">
-                我們定義「新奢侈」不再是昂貴的價格，<br>而是對生命的尊重與無負擔的優雅。
-            </p>
-            <div class="fade-in-up" style="animation-delay: 0.8s;">
-                <a href="#vision" class="inline-block border border-white px-10 py-4 hover:bg-white hover:text-aeren-text transition-all duration-300 uppercase tracking-widest text-sm">
-                    探索 AEREN
-                </a>
-            </div>
-        </div>
-       
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-white text-xl opacity-70"></i>
-        </div>
-    </section>
- 
-    <!-- Vision / Introduction -->
-    <section id="vision" class="py-24 md:py-32 bg-aeren-stone">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div class="absolute -top-10 -left-10 w-full h-full border border-aeren-green/20 z-0 hidden md:block"></div>
-                    <img src="https://images.unsplash.com/photo-1595991209241-35436203f196?q=80&w=2080&auto=format&fit=crop" alt="Minimalist Bag" class="relative z-10 w-full h-[500px] object-cover shadow-xl grayscale hover:grayscale-0 transition-all duration-700">
-                </div>
-                <div class="space-y-8">
-                    <h2 class="text-3xl md:text-4xl font-serif text-aeren-green mb-6">修復地球與美學之間的裂痕</h2>
-                    <p class="text-aeren-text/80 leading-loose text-lg text-justify">
-                        AEREN 致力於透過減少浪費，尊重環保。我們使用回收材料，結合設計師的巧思與工藝，創造出美觀、耐用、可重複使用且對環境衝擊小的包袋。
-                    </p>
-                    <div class="border-l-4 border-aeren-green pl-6 py-2">
-                        <p class="text-xl font-serif italic text-aeren-text">
-                            「和消費者一起將環保與永續視為購物標準，而非加分選項。」
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-8 pt-4">
-                        <div>
-                            <h4 class="font-bold text-aeren-green mb-2">01. 減量再利用</h4>
-                            <p class="text-sm text-gray-600">利用回收海洋塑料，賦予廢棄物新生命。</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-aeren-green mb-2">02. 公平貿易</h4>
-                            <p class="text-sm text-gray-600">確保供應鏈透明，維護工匠勞權尊嚴。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
- 
-    <!-- Product Features (System) -->
-    <section id="product" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <span class="text-aeren-green text-sm uppercase tracking-widest font-semibold">Product System</span>
-                <h2 class="text-3xl md:text-5xl font-serif mt-4 text-aeren-text">物理層面的創新與工藝</h2>
-            </div>
- 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Feature 1 -->
-                <div class="group text-center">
-                    <div class="w-20 h-20 mx-auto bg-aeren-sand rounded-full flex items-center justify-center mb-6 group-hover:bg-aeren-green transition-colors duration-300">
-                        <i class="fas fa-wind text-2xl text-aeren-text group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-serif mb-4">呼吸材料 <br><span class="text-sm font-sans text-gray-500">AEREN-Fiber</span></h3>
-                    <p class="text-gray-600 leading-relaxed text-sm px-4">
-                        採用回收海洋塑料與廢棄漁網精煉而成的奈米纖維。質地親膚且具備防潑水性能，呈現如空氣般的輕盈感。
-                    </p>
-                </div>
- 
-                <!-- Feature 2 -->
-                <div class="group text-center">
-                    <div class="w-20 h-20 mx-auto bg-aeren-sand rounded-full flex items-center justify-center mb-6 group-hover:bg-aeren-green transition-colors duration-300">
-                        <i class="fas fa-layer-group text-2xl text-aeren-text group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-serif mb-4">模組化設計 <br><span class="text-sm font-sans text-gray-500">Life-Adapt Design</span></h3>
-                    <p class="text-gray-600 leading-relaxed text-sm px-4">
-                        包袋結構可靈活調整（如子母包組合），適應女性多樣的生活情境，延長單一產品壽命，落實「減量購買」。
-                    </p>
-                </div>
- 
-                <!-- Feature 3 -->
-                <div class="group text-center">
-                    <div class="w-20 h-20 mx-auto bg-aeren-sand rounded-full flex items-center justify-center mb-6 group-hover:bg-aeren-green transition-colors duration-300">
-                        <i class="fas fa-infinity text-2xl text-aeren-text group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-serif mb-4">永續修復 <br><span class="text-sm font-sans text-gray-500">Rebirth System</span></h3>
-                    <p class="text-gray-600 leading-relaxed text-sm px-4">
-                        隨包附贈「重生袋」。損壞或不再使用時可寄回維修或回收，換取優惠，建立完整的閉環循環。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
- 
-    <!-- The Moat (Why Us) -->
-    <section id="moat" class="py-24 bg-aeren-stone overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-white p-8 md:p-16 shadow-sm rounded-sm">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <span class="text-aeren-green text-sm uppercase tracking-widest font-semibold block mb-2">Our Advantage</span>
-                        <h2 class="text-3xl font-serif mb-8">競爭護城河</h2>
-                       
-                        <div class="space-y-8">
-                            <div class="flex items-start">
-                                <span class="text-4xl text-aeren-sand font-serif mr-4">01</span>
-                                <div>
-                                    <h4 class="text-lg font-bold mb-2">韓式美學的文化溢價</h4>
-                                    <p class="text-gray-600 text-sm leading-relaxed">亞洲市場對「韓國設計」的高度信任。我們將永續包從「環保贈品感」提升至「精品穿搭感」。</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-4xl text-aeren-sand font-serif mr-4">02</span>
-                                <div>
-                                    <h4 class="text-lg font-bold mb-2">封閉式循環供應鏈</h4>
-                                    <p class="text-gray-600 text-sm leading-relaxed">與特定的回收纖維供應商深度合作，確保材料來源的唯一性與故事性，杜絕漂綠疑慮。</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-4xl text-aeren-sand font-serif mr-4">03</span>
-                                <div>
-                                    <h4 class="text-lg font-bold mb-2">情感品牌忠誠度</h4>
-                                    <p class="text-gray-600 text-sm leading-relaxed">消費者買的不僅是包，而是一個「環保標準」的推動者身份。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative h-96 lg:h-full min-h-[400px]">
-                         <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1887&auto=format&fit=crop" alt="Korean Aesthetic Style" class="absolute inset-0 w-full h-full object-cover">
-                         <div class="absolute bottom-6 left-6 bg-white/90 p-4 max-w-xs backdrop-blur-sm">
-                             <p class="font-serif italic text-aeren-text">"Light as air, tough as rebirth."</p>
-                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
- 
-    <!-- Roadmap -->
-    <section id="roadmap" class="py-24 bg-aeren-green text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-serif">發展藍圖</h2>
-                <p class="mt-4 opacity-80 font-light">從樣品開發到亞洲區域擴張的戰略規劃</p>
-            </div>
- 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Q1-Q2 -->
-                <div class="bg-white/10 p-8 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                    <span class="text-2xl font-serif block mb-4 border-b border-white/30 pb-2">Q1-Q2</span>
-                    <h4 class="text-lg font-bold mb-2">啟動期</h4>
-                    <ul class="text-sm opacity-80 space-y-2 list-disc list-inside">
-                        <li>3 款核心產品樣品開發</li>
-                        <li>韓國永續影響力人物聯名</li>
-                        <li>發起「我的綠色穿搭」挑戰</li>
-                    </ul>
-                </div>
- 
-                <!-- Q3 -->
-                <div class="bg-white/10 p-8 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                    <span class="text-2xl font-serif block mb-4 border-b border-white/30 pb-2">Q3</span>
-                    <h4 class="text-lg font-bold mb-2">市場切入期</h4>
-                    <ul class="text-sm opacity-80 space-y-2 list-disc list-inside">
-                        <li>開啟 D2C 官網銷售</li>
-                        <li>台北/首爾「呼吸森林」快閃店</li>
-                        <li>強化實體品牌觸感</li>
-                    </ul>
-                </div>
- 
-                <!-- Q4 -->
-                <div class="bg-white/10 p-8 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                    <span class="text-2xl font-serif block mb-4 border-b border-white/30 pb-2">Q4</span>
-                    <h4 class="text-lg font-bold mb-2">循環建立期</h4>
-                    <ul class="text-sm opacity-80 space-y-2 list-disc list-inside">
-                        <li>啟動 "Life-Renew" 回收計畫</li>
-                        <li>建立 5,000 名核心會員</li>
-                        <li>優化回收物流系統</li>
-                    </ul>
-                </div>
- 
-                <!-- Year 2 -->
-                <div class="bg-white/10 p-8 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                    <span class="text-2xl font-serif block mb-4 border-b border-white/30 pb-2">Year 2</span>
-                    <h4 class="text-lg font-bold mb-2">區域擴張</h4>
-                    <ul class="text-sm opacity-80 space-y-2 list-disc list-inside">
-                        <li>進軍日本與新加坡市場</li>
-                        <li>拓展精品選物店通路</li>
-                        <li>擴大 ESG 企業禮贈品線</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
- 
-    <!-- Team -->
-    <section id="team" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-             <h2 class="text-3xl font-serif text-aeren-text mb-16">核心團隊</h2>
-             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                 <!-- Member 1 -->
-                 <div class="space-y-4">
-                     <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full overflow-hidden">
-                         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop" alt="CEO" class="w-full h-full object-cover">
-                     </div>
-                     <div>
-                         <h4 class="text-xl font-bold text-aeren-text">Founder / CEO</h4>
-                         <p class="text-sm text-aeren-green font-medium mb-2">行銷與品牌戰略</p>
-                         <p class="text-xs text-gray-500 max-w-xs mx-auto">具備韓國時尚產業背景，曾負責知名包袋品牌行銷。</p>
-                     </div>
-                 </div>
-                 <!-- Member 2 -->
-                 <div class="space-y-4">
-                     <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full overflow-hidden">
-                         <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" alt="Designer" class="w-full h-full object-cover">
-                     </div>
-                     <div>
-                         <h4 class="text-xl font-bold text-aeren-text">Design Director</h4>
-                         <p class="text-sm text-aeren-green font-medium mb-2">極簡美學轉化</p>
-                         <p class="text-xs text-gray-500 max-w-xs mx-auto">旅韓資深設計師，擅長將極簡美學轉化為實體結構。</p>
-                     </div>
-                 </div>
-                 <!-- Member 3 -->
-                 <div class="space-y-4">
-                     <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full overflow-hidden">
-                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop" alt="Supply Chain" class="w-full h-full object-cover">
-                     </div>
-                     <div>
-                         <h4 class="text-xl font-bold text-aeren-text">Supply Chain Lead</h4>
-                         <p class="text-sm text-aeren-green font-medium mb-2">材料開發與供應鏈</p>
-                         <p class="text-xs text-gray-500 max-w-xs mx-auto">擁有 10 年再生材料開發經驗，深耕亞洲環保紡織供應鏈。</p>
-                     </div>
-                 </div>
-             </div>
-        </div>
-    </section>
- 
-    <!-- Footer / Contact / Ask -->
-    <footer id="contact" class="bg-aeren-text text-white py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-gray-700 pb-12 mb-12">
-                <div class="col-span-1 lg:col-span-2">
-                    <h2 class="text-3xl font-serif mb-6 tracking-widest">AEREN</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-md">
-                        AEREN 相信，每一次購物都是在為我們想要的未來投票。我們不尋求顛覆世界，我們只想溫柔地改變消費者的衣櫥。
-                    </p>
-                </div>
-               
-                <div>
-                    <h4 class="text-lg font-serif mb-4">聯絡我們</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><i class="fas fa-envelope mr-2"></i> contact@aeren.com</li>
-                        <li><i class="fas fa-map-marker-alt mr-2"></i> Seoul / Taipei / Tokyo</li>
-                        <li><i class="fas fa-phone mr-2"></i> +886 2 1234 5678</li>
-                    </ul>
-                </div>
- 
-                <div>
-                    <h4 class="text-lg font-serif mb-4">投資資訊</h4>
-                    <p class="text-sm text-gray-400 mb-4">
-                        我們正在尋找理念相同的合作夥伴。
-                    </p>
-                    <a href="mailto:invest@aeren.com" class="inline-block border border-white/30 px-6 py-2 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors">
-                        索取詳細計畫書
-                    </a>
-                </div>
-            </div>
-           
-            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2024 AEREN. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
- 
-    <script>
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
- 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
- 
-        // Sticky Navbar effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.replace('bg-aeren-stone/90', 'bg-white/95');
-            } else {
-                navbar.classList.remove('shadow-md');
-                navbar.classList.replace('bg-white/95', 'bg-aeren-stone/90');
-            }
-        });
-    </script>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-aeren-200 selection:text-aeren-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-serif text-2xl font-bold tracking-widest text-aeren-900">AEREN</span>
+                    <span class="hidden md:block text-xs uppercase tracking-widest text-aeren-500 mt-1">Air + Renew</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#vision" class="text-sm font-medium hover:text-aeren-700 transition-colors">品牌願景</a>
+                    <a href="#pain-points" class="text-sm font-medium hover:text-aeren-700 transition-colors">痛點與解答</a>
+                    <a href="#products" class="text-sm font-medium hover:text-aeren-700 transition-colors">產品特色</a>
+                    <a href="#roadmap" class="text-sm font-medium hover:text-aeren-700 transition-colors">發展藍圖</a>
+                    <a href="#team" class="text-sm font-medium hover:text-aeren-700 transition-colors">團隊</a>
+                    <a href="#contact" class="px-5 py-2 bg-stone-900 text-white text-xs tracking-widest hover:bg-aeren-700 transition-colors duration-300">加入循環</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-stone-800 hover:text-aeren-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" alt="Minimalist sustainable fashion" class="w-full h-full object-cover object-center opacity-90">
+            <div class="absolute inset-0 bg-stone-100/30"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-stone-50"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <p class="font-serif italic text-aeren-700 text-lg md:text-xl mb-4 fade-in-up">Air + Renew</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-stone-900 mb-6 leading-tight fade-in-up delay-100">
+                AEREN
+            </h1>
+            <p class="text-lg md:text-2xl text-stone-700 mb-10 font-light fade-in-up delay-200 leading-relaxed">
+                我們不只是在製造包包，<br class="md:hidden">我們在修復地球與美學之間的裂痕。
+            </p>
+            <div class="fade-in-up delay-300">
+                <a href="#vision" class="inline-block border border-stone-800 px-8 py-3 text-sm tracking-[0.2em] hover:bg-stone-800 hover:text-white transition-all duration-300">
+                    探索新奢侈
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Vision Section -->
+    <section id="vision" class="py-24 bg-stone-50">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl mb-8 text-stone-900">核心願景</h2>
+            <div class="w-16 h-0.5 bg-aeren-300 mx-auto mb-8"></div>
+            <p class="text-xl md:text-2xl font-light leading-relaxed text-stone-700 mb-6">
+                「和消費者一起將環保與永續視為購物標準而非加分選項」
+            </p>
+            <p class="text-stone-500 leading-loose">
+                AEREN 致力於透過減少浪費，尊重環保。透過使用回收材料，結合設計師的巧思與工藝，創造出美觀、耐用、可重複使用且對環境衝擊小的包袋。我們實踐減量、再利用、回收，並推廣公平貿易與延長生命的理念，讓時尚與永續併行。
+            </p>
+        </div>
+    </section>
+
+    <!-- Pain Points (Grid) -->
+    <section id="pain-points" class="py-24 bg-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-aeren-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl mb-6 text-stone-900">痛點分析</h2>
+                    <p class="text-stone-500 mb-8">為何現今的時尚選擇總讓我們在「美感」與「良知」間掙扎？</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4 p-4 hover:bg-stone-50 transition-colors rounded-lg">
+                            <div class="flex-shrink-0 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center text-aeren-700">
+                                <i class="fas fa-smog"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-stone-800 mb-1">環境代價高昂</h3>
+                                <p class="text-sm text-stone-500">時尚產業是全球第二大污染源，傳統皮革與合成皮生產過程排放大量毒素與溫室氣體。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4 p-4 hover:bg-stone-50 transition-colors rounded-lg">
+                            <div class="flex-shrink-0 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center text-aeren-700">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-stone-800 mb-1">美感與環保的拉鋸</h3>
+                                <p class="text-sm text-stone-500">現有的環保包（如帆布袋）往往缺乏設計感，難以進入高端社交與職場場合。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4 p-4 hover:bg-stone-50 transition-colors rounded-lg">
+                            <div class="flex-shrink-0 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center text-aeren-700">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-stone-800 mb-1">回收機制破碎</h3>
+                                <p class="text-sm text-stone-500">消費者想汰換包包時，缺乏透明、便利且具經濟回報的回收管道。</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 hover:bg-stone-50 transition-colors rounded-lg">
+                            <div class="flex-shrink-0 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center text-aeren-700">
+                                <i class="fas fa-search-dollar"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-stone-800 mb-1">綠洗 (Greenwashing) 疑慮</h3>
+                                <p class="text-sm text-stone-500">消費者難以驗證產品的永續足跡與真實來源。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative h-[600px] hidden md:block group">
+                    <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?q=80&w=1957&auto=format&fit=crop" alt="Sustainable Fashion Bag" class="w-full h-full object-cover rounded-sm shadow-xl transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur p-6 border border-white/50 shadow-lg">
+                        <p class="font-serif italic text-aeren-900 text-lg mb-2">"AEREN: Air + Renew"</p>
+                        <p class="text-xs text-stone-500">我們定義「新奢侈」不再是昂貴的價格，而是「對生命的尊重」 與 「無負擔的優雅」。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / Product Features -->
+    <section id="products" class="py-24 bg-stone-900 text-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">產品特色</h2>
+                <p class="text-aeren-200">物理層面的創新與美學工藝</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="group">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1887&auto=format&fit=crop" alt="Fabric Texture" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-wind text-4xl text-white drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-serif mb-2">呼吸材料 (AEREN-Fiber)</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed">採用回收海洋塑料與廢棄漁網精煉而成的奈米纖維，質地親膚且具備防潑水性能，呈現如空氣般的輕盈感。</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="group">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=1935&auto=format&fit=crop" alt="Modular Design" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-layer-group text-4xl text-white drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-serif mb-2">模組化設計 (Life-Adapt)</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed">考慮到女性多樣的生活情境，包袋結構可靈活調整（如：子母包組合），延長單一產品的使用情境，落實「減量購買」。</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="group">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?q=80&w=1888&auto=format&fit=crop" alt="Craftsmanship" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-hands text-4xl text-white drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-serif mb-2">公平貿易工藝</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed">透明供應鏈下的工匠手工縫製，確保勞權尊嚴，並在內標註明這件產品減少了多少碳足跡。</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="group">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1964&auto=format&fit=crop" alt="Repair Service" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-infinity text-4xl text-white drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-serif mb-2">永續修復服務</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed">隨包附贈一只「重生袋」，損壞或生命週期結束時可寄回維修或回收，換取下一件產品的折抵優惠。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Moat & Market -->
+    <section class="py-24 bg-aeren-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <!-- Moat -->
+                <div class="bg-white p-10 shadow-sm border border-aeren-100">
+                    <h3 class="font-serif text-2xl mb-6 text-stone-800 border-b border-aeren-200 pb-4">競爭護城河</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <span class="text-aeren-700 mr-4 mt-1"><i class="fas fa-check-circle"></i></span>
+                            <div>
+                                <h4 class="font-bold text-stone-800">韓式美學的文化溢價</h4>
+                                <p class="text-sm text-stone-600 mt-1">亞洲市場對「韓國設計」有著極高的信任與嚮往。AEREN 掌握核心設計美感，將永續包從「環保贈品感」提升至「精品穿搭感」。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-aeren-700 mr-4 mt-1"><i class="fas fa-check-circle"></i></span>
+                            <div>
+                                <h4 class="font-bold text-stone-800">封閉式循環供應鏈</h4>
+                                <p class="text-sm text-stone-600 mt-1">與特定的回收纖維供應商建立深度合作，確保材料來源的唯一性與故事性。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-aeren-700 mr-4 mt-1"><i class="fas fa-check-circle"></i></span>
+                            <div>
+                                <h4 class="font-bold text-stone-800">情感品牌忠誠度</h4>
+                                <p class="text-sm text-stone-600 mt-1">透過「生命尊重」的品牌敘事，建立起一個強大的社群。消費者買的不僅是包，而是一個「環保標準」的推動者身份。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Market & Target -->
+                <div class="flex flex-col justify-center">
+                    <h3 class="font-serif text-2xl mb-6 text-stone-800">目標市場</h3>
+                    <div class="bg-stone-900 text-white p-8 rounded-lg mb-6 relative overflow-hidden">
+                        <div class="absolute right-0 top-0 opacity-10 text-9xl font-serif -mr-4 -mt-4">Target</div>
+                        <h4 class="text-xl font-bold mb-2 text-aeren-300">亞洲一線城市女性</h4>
+                        <p class="mb-4">25-40 歲 | 居住於首爾、台北、東京、上海</p>
+                        <p class="text-sm text-stone-300">關注環保議題、追求生活質感、有穩定消費能力。</p>
+                    </div>
+
+                    <h3 class="font-serif text-2xl mb-4 text-stone-800 mt-4">AEREN 定位</h3>
+                    <p class="text-lg italic text-aeren-700 border-l-4 border-aeren-500 pl-4">
+                        「專為亞洲女性設計，兼具柔美感、輕便性與完全永續性。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-serif text-3xl md:text-4xl text-center mb-16 text-stone-900">發展藍圖</h2>
+            
+            <div class="relative border-l-2 border-aeren-200 ml-6 md:ml-12 space-y-12">
+                <!-- Q1-Q2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-aeren-500 border-4 border-white shadow-sm"></div>
+                    <span class="text-xs font-bold tracking-widest text-aeren-500 mb-1 block">Q1-Q2 啟動期</span>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">樣品開發 & 社群挑戰</h3>
+                    <p class="text-stone-600">完成 3 款核心產品的樣品開發；與韓國知名永續影響力人物聯名，在社群發起「我的綠色穿搭」挑戰。</p>
+                </div>
+
+                <!-- Q3 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-stone-300 border-4 border-white shadow-sm"></div>
+                    <span class="text-xs font-bold tracking-widest text-stone-400 mb-1 block">Q3 市場切入期</span>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">D2C 官網 & 快閃體驗</h3>
+                    <p class="text-stone-600">開啟 D2C 官網通路；在台北與首爾舉辦「呼吸森林」快閃體驗店，強化品牌觸感。</p>
+                </div>
+
+                <!-- Q4 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-stone-300 border-4 border-white shadow-sm"></div>
+                    <span class="text-xs font-bold tracking-widest text-stone-400 mb-1 block">Q4 循環建立期</span>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">Life-Renew 回收計畫</h3>
+                    <p class="text-stone-600">正式啟動回收修復計畫，建立首批 5,000 名核心品牌會員。</p>
+                </div>
+
+                <!-- Year 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-stone-300 border-4 border-white shadow-sm"></div>
+                    <span class="text-xs font-bold tracking-widest text-stone-400 mb-1 block">Year 2 區域擴張</span>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">進軍日本與新加坡</h3>
+                    <p class="text-stone-600">拓展實體精品選物店通路。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team & Financials -->
+    <section id="team" class="py-24 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Team -->
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl mb-4 text-stone-900">核心團隊</h2>
+                <p class="text-stone-500">一群熱愛地球的理想主義者，也是實踐美學的專家</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-24">
+                <div class="bg-white p-6 shadow-sm text-center">
+                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop" alt="CEO" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
+                    </div>
+                    <h3 class="font-bold text-lg">林宜靜 / 蔡宜真</h3>
+                    <p class="text-xs text-aeren-500 uppercase tracking-wider mb-3">Founder / CEO</p>
+                    <p class="text-sm text-stone-500">具備韓國時尚產業背景，曾負責知名包袋品牌行銷。</p>
+                </div>
+
+                <div class="bg-white p-6 shadow-sm text-center">
+                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" alt="Design Director" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
+                    </div>
+                    <h3 class="font-bold text-lg">簡怡雯 / 朱淳甄</h3>
+                    <p class="text-xs text-aeren-500 uppercase tracking-wider mb-3">Design Director</p>
+                    <p class="text-sm text-stone-500">旅韓資深設計師，擅長將極簡美學轉化為實體結構。</p>
+                </div>
+
+                <div class="bg-white p-6 shadow-sm text-center">
+                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1887&auto=format&fit=crop" alt="Supply Chain" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
+                    </div>
+                    <h3 class="font-bold text-lg">黃傑</h3>
+                    <p class="text-xs text-aeren-500 uppercase tracking-wider mb-3">Supply Chain Lead</p>
+                    <p class="text-sm text-stone-500">擁有 10 年再生材料開發經驗，深耕亞洲環保紡織供應鏈。</p>
+                </div>
+            </div>
+
+            <!-- Investment Ask -->
+            <div class="bg-stone-900 text-white rounded-2xl p-8 md:p-12 overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="font-serif text-3xl mb-4">投資需求 (The Ask)</h2>
+                        <div class="text-5xl font-bold text-aeren-300 mb-6">$500,000 <span class="text-lg text-white font-normal">USD</span></div>
+                        <p class="text-stone-300 mb-6">我們尋找認同永續價值的合作夥伴，共同推動這場溫柔的革命。</p>
+                        <a href="mailto:invest@aeren.com" class="inline-block bg-white text-stone-900 px-8 py-3 font-bold hover:bg-aeren-100 transition-colors">聯繫我們</a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm">
+                            <div class="text-2xl font-bold text-aeren-300">40%</div>
+                            <div class="text-sm text-stone-300">研發與採購</div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm">
+                            <div class="text-2xl font-bold text-aeren-300">30%</div>
+                            <div class="text-sm text-stone-300">品牌行銷</div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm">
+                            <div class="text-2xl font-bold text-aeren-300">20%</div>
+                            <div class="text-sm text-stone-300">供應鏈與物流</div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm">
+                            <div class="text-2xl font-bold text-aeren-300">10%</div>
+                            <div class="text-sm text-stone-300">運營預備金</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-white border-t border-stone-200 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-serif text-4xl text-stone-900 mb-6">AEREN</h2>
+            <p class="text-stone-500 max-w-2xl mx-auto mb-8">
+                「每一次購物都是在為我們想要的未來投票。我們不尋求顛覆世界，我們只想溫柔地改變消費者的衣櫥。」
+            </p>
+            <div class="flex justify-center space-x-6 mb-12">
+                <a href="#" class="text-stone-400 hover:text-aeren-700 transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="text-stone-400 hover:text-aeren-700 transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="text-stone-400 hover:text-aeren-700 transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+            </div>
+            <p class="text-xs text-stone-400">© 2026 AEREN Inc. All rights reserved. Designed for Sustainable Future.</p>
+        </div>
+    </footer>
+
 </body>
 </html>

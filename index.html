@@ -61,19 +61,23 @@
         html {
             scroll-behavior: smooth;
         }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        
+        /* Subtle image hover effect */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom {
+            transition: transform 0.7s ease;
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-aeren-200 selection:text-aeren-900">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-stone-100">
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-stone-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
@@ -99,24 +103,31 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Overlay -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden bg-aeren-100">
+        <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" alt="Minimalist sustainable fashion" class="w-full h-full object-cover object-center opacity-90">
-            <div class="absolute inset-0 bg-stone-100/30"></div>
+            <!-- 
+                Hero Image: 時尚女性手持極簡包包，米色調，符合韓系美學。
+                onerror 機制：若 Unsplash 圖片載入失敗，將自動載入 dummyimage 確保畫面不空白。
+            -->
+            <img src="https://images.unsplash.com/photo-1564485377539-4af72d1f6a2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Fashionable woman holding minimalist bag" 
+                 class="w-full h-full object-cover object-center opacity-90"
+                 onerror="this.onerror=null; this.src='https://dummyimage.com/1920x1080/e6f0f2/1f3a3d.jpg&text=AEREN';">
+            <div class="absolute inset-0 bg-stone-100/20"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-stone-50"></div>
         </div>
 
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
-            <p class="font-serif italic text-aeren-700 text-lg md:text-xl mb-4 fade-in-up">Air + Renew</p>
-            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-stone-900 mb-6 leading-tight fade-in-up delay-100">
+            <p class="font-serif italic text-aeren-700 text-lg md:text-xl mb-4 fade-in-up font-medium tracking-wide">Air + Renew</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-stone-900 mb-6 leading-tight fade-in-up delay-100 drop-shadow-sm">
                 AEREN
             </h1>
-            <p class="text-lg md:text-2xl text-stone-700 mb-10 font-light fade-in-up delay-200 leading-relaxed">
+            <p class="text-lg md:text-2xl text-stone-800 mb-10 font-light fade-in-up delay-200 leading-relaxed drop-shadow-sm">
                 我們不只是在製造包包，<br class="md:hidden">我們在修復地球與美學之間的裂痕。
             </p>
             <div class="fade-in-up delay-300">
-                <a href="#vision" class="inline-block border border-stone-800 px-8 py-3 text-sm tracking-[0.2em] hover:bg-stone-800 hover:text-white transition-all duration-300">
+                <a href="#vision" class="inline-block border border-stone-800 bg-white/60 backdrop-blur-sm px-10 py-4 text-sm font-bold tracking-[0.2em] hover:bg-stone-800 hover:text-white transition-all duration-300 shadow-sm">
                     探索新奢侈
                 </a>
             </div>
@@ -131,71 +142,59 @@
             <p class="text-xl md:text-2xl font-light leading-relaxed text-stone-700 mb-6">
                 「和消費者一起將環保與永續視為購物標準而非加分選項」
             </p>
-            <p class="text-stone-500 leading-loose">
+            <p class="text-stone-500 leading-loose text-justify md:text-center">
                 AEREN 致力於透過減少浪費，尊重環保。透過使用回收材料，結合設計師的巧思與工藝，創造出美觀、耐用、可重複使用且對環境衝擊小的包袋。我們實踐減量、再利用、回收，並推廣公平貿易與延長生命的理念，讓時尚與永續併行。
             </p>
         </div>
     </section>
 
-    <!-- Pain Points (Grid) -->
+    <!-- Pain Points (Centered Text Layout) -->
     <section id="pain-points" class="py-24 bg-white relative overflow-hidden">
-        <!-- Decoration -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-aeren-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="font-serif text-3xl md:text-4xl mb-6 text-stone-900">痛點分析</h2>
-                    <p class="text-stone-500 mb-8">為何現今的時尚選擇總讓我們在「美感」與「良知」間掙扎？</p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex gap-4 p-4 hover:bg-stone-50 transition-colors rounded-lg">
-                            <div class="flex-shrink-0 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center text-aeren-700">
-                                <i class="fas fa-smog"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-stone-800 mb-1">環境代價高昂</h3>
-                                <p class="text-sm text-stone-500">時尚產業是全球第二大污染源，傳統皮革與合成皮生產過程排放大量毒素與溫室氣體。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-4 p-4 hover:bg-stone-50 transition-colors rounded-lg">
-                            <div class="flex-shrink-0 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center text-aeren-700">
-                                <i class="fas fa-palette"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-stone-800 mb-1">美感與環保的拉鋸</h3>
-                                <p class="text-sm text-stone-500">現有的環保包（如帆布袋）往往缺乏設計感，難以進入高端社交與職場場合。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-4 p-4 hover:bg-stone-50 transition-colors rounded-lg">
-                            <div class="flex-shrink-0 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center text-aeren-700">
-                                <i class="fas fa-recycle"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-stone-800 mb-1">回收機制破碎</h3>
-                                <p class="text-sm text-stone-500">消費者想汰換包包時，缺乏透明、便利且具經濟回報的回收管道。</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4 p-4 hover:bg-stone-50 transition-colors rounded-lg">
-                            <div class="flex-shrink-0 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center text-aeren-700">
-                                <i class="fas fa-search-dollar"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-stone-800 mb-1">綠洗 (Greenwashing) 疑慮</h3>
-                                <p class="text-sm text-stone-500">消費者難以驗證產品的永續足跡與真實來源。</p>
-                            </div>
-                        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- 移除了原本的 Grid 佈局與圖片，改為置中文字佈局 -->
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl mb-6 text-stone-900">痛點分析</h2>
+                <p class="text-stone-500 text-lg">為何現今的時尚選擇總讓我們在「美感」與「良知」間掙扎？</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 text-left">
+                <div class="flex gap-4 p-6 hover:bg-stone-50 transition-colors rounded-lg border border-stone-100 hover:border-aeren-200 bg-white shadow-sm">
+                    <div class="flex-shrink-0 w-12 h-12 bg-aeren-50 rounded-full flex items-center justify-center text-aeren-700">
+                        <i class="fas fa-smog"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-stone-800 mb-2">環境代價高昂</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">時尚產業是全球第二大污染源，傳統皮革與合成皮生產過程排放大量毒素與溫室氣體。</p>
                     </div>
                 </div>
                 
-                <div class="relative h-[600px] hidden md:block group">
-                    <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?q=80&w=1957&auto=format&fit=crop" alt="Sustainable Fashion Bag" class="w-full h-full object-cover rounded-sm shadow-xl transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur p-6 border border-white/50 shadow-lg">
-                        <p class="font-serif italic text-aeren-900 text-lg mb-2">"AEREN: Air + Renew"</p>
-                        <p class="text-xs text-stone-500">我們定義「新奢侈」不再是昂貴的價格，而是「對生命的尊重」 與 「無負擔的優雅」。</p>
+                <div class="flex gap-4 p-6 hover:bg-stone-50 transition-colors rounded-lg border border-stone-100 hover:border-aeren-200 bg-white shadow-sm">
+                    <div class="flex-shrink-0 w-12 h-12 bg-aeren-50 rounded-full flex items-center justify-center text-aeren-700">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-stone-800 mb-2">美感與環保的拉鋸</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">現有的環保包（如帆布袋）往往缺乏設計感，難以進入高端社交與職場場合。</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 p-6 hover:bg-stone-50 transition-colors rounded-lg border border-stone-100 hover:border-aeren-200 bg-white shadow-sm">
+                    <div class="flex-shrink-0 w-12 h-12 bg-aeren-50 rounded-full flex items-center justify-center text-aeren-700">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-stone-800 mb-2">回收機制破碎</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">消費者想汰換包包時，缺乏透明、便利且具經濟回報的回收管道。</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-6 hover:bg-stone-50 transition-colors rounded-lg border border-stone-100 hover:border-aeren-200 bg-white shadow-sm">
+                    <div class="flex-shrink-0 w-12 h-12 bg-aeren-50 rounded-full flex items-center justify-center text-aeren-700">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-stone-800 mb-2">綠洗 (Greenwashing) 疑慮</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">消費者難以驗證產品的永續足跡與真實來源。</p>
                     </div>
                 </div>
             </div>
@@ -211,52 +210,72 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Feature 1 -->
-                <div class="group">
-                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
-                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1887&auto=format&fit=crop" alt="Fabric Texture" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-wind text-4xl text-white drop-shadow-lg"></i>
+                <!-- Feature 1: 呼吸材料 -->
+                <div class="group relative bg-stone-800 pb-6 rounded-b-lg">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4] img-zoom-container bg-stone-700 rounded-t-lg">
+                        <img src="https://images.unsplash.com/photo-1559563458-527698bf5295?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Fabric texture" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100 img-zoom"
+                             onerror="this.onerror=null; this.src='https://dummyimage.com/600x800/333333/ffffff.jpg&text=Material';">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <i class="fas fa-wind text-4xl text-white drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-serif mb-2">呼吸材料 (AEREN-Fiber)</h3>
-                    <p class="text-stone-400 text-sm leading-relaxed">採用回收海洋塑料與廢棄漁網精煉而成的奈米纖維，質地親膚且具備防潑水性能，呈現如空氣般的輕盈感。</p>
+                    <div class="px-6">
+                        <h3 class="text-xl font-serif mb-2 text-aeren-200">呼吸材料 (AEREN-Fiber)</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">採用回收海洋塑料與廢棄漁網精煉而成的奈米纖維，質地親膚且具備防潑水性能，呈現如空氣般的輕盈感。</p>
+                    </div>
                 </div>
 
-                <!-- Feature 2 -->
-                <div class="group">
-                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
-                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=1935&auto=format&fit=crop" alt="Modular Design" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-layer-group text-4xl text-white drop-shadow-lg"></i>
+                <!-- Feature 2: 模組化設計 -->
+                <div class="group relative bg-stone-800 pb-6 rounded-b-lg">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4] img-zoom-container bg-stone-700 rounded-t-lg">
+                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Modular structured bag" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100 img-zoom"
+                             onerror="this.onerror=null; this.src='https://dummyimage.com/600x800/333333/ffffff.jpg&text=Design';">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <i class="fas fa-layer-group text-4xl text-white drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-serif mb-2">模組化設計 (Life-Adapt)</h3>
-                    <p class="text-stone-400 text-sm leading-relaxed">考慮到女性多樣的生活情境，包袋結構可靈活調整（如：子母包組合），延長單一產品的使用情境，落實「減量購買」。</p>
+                    <div class="px-6">
+                        <h3 class="text-xl font-serif mb-2 text-aeren-200">模組化設計 (Life-Adapt)</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">考慮到女性多樣的生活情境，包袋結構可靈活調整（如：子母包組合），延長單一產品的使用情境，落實「減量購買」。</p>
+                    </div>
                 </div>
 
-                <!-- Feature 3 -->
-                <div class="group">
-                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
-                        <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?q=80&w=1888&auto=format&fit=crop" alt="Craftsmanship" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-hands text-4xl text-white drop-shadow-lg"></i>
+                <!-- Feature 3: 公平貿易 -->
+                <div class="group relative bg-stone-800 pb-6 rounded-b-lg">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4] img-zoom-container bg-stone-700 rounded-t-lg">
+                        <img src="https://images.unsplash.com/photo-1605733513597-a8f8341084e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Hands craftsmanship" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100 img-zoom"
+                             onerror="this.onerror=null; this.src='https://dummyimage.com/600x800/333333/ffffff.jpg&text=Craftsmanship';">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <i class="fas fa-hands text-4xl text-white drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-serif mb-2">公平貿易工藝</h3>
-                    <p class="text-stone-400 text-sm leading-relaxed">透明供應鏈下的工匠手工縫製，確保勞權尊嚴，並在內標註明這件產品減少了多少碳足跡。</p>
+                    <div class="px-6">
+                        <h3 class="text-xl font-serif mb-2 text-aeren-200">公平貿易工藝</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">透明供應鏈下的工匠手工縫製，確保勞權尊嚴，並在內標註明這件產品減少了多少碳足跡。</p>
+                    </div>
                 </div>
 
-                <!-- Feature 4 -->
-                <div class="group">
-                    <div class="relative overflow-hidden mb-6 aspect-[3/4]">
-                        <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1964&auto=format&fit=crop" alt="Repair Service" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-infinity text-4xl text-white drop-shadow-lg"></i>
+                <!-- Feature 4: 永續修復 -->
+                <div class="group relative bg-stone-800 pb-6 rounded-b-lg">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4] img-zoom-container bg-stone-700 rounded-t-lg">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Bag repair service concept" 
+                             class="w-full h-full object-cover opacity-90 group-hover:opacity-100 img-zoom"
+                             onerror="this.onerror=null; this.src='https://dummyimage.com/600x800/333333/ffffff.jpg&text=Repair';">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <i class="fas fa-infinity text-4xl text-white drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-serif mb-2">永續修復服務</h3>
-                    <p class="text-stone-400 text-sm leading-relaxed">隨包附贈一只「重生袋」，損壞或生命週期結束時可寄回維修或回收，換取下一件產品的折抵優惠。</p>
+                    <div class="px-6">
+                        <h3 class="text-xl font-serif mb-2 text-aeren-200">永續修復服務</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">隨包附贈一只「重生袋」，損壞或生命週期結束時可寄回維修或回收，換取下一件產品的折抵優惠。</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -268,7 +287,7 @@
             <div class="grid lg:grid-cols-2 gap-12">
                 
                 <!-- Moat -->
-                <div class="bg-white p-10 shadow-sm border border-aeren-100">
+                <div class="bg-white p-10 shadow-sm border border-aeren-100 rounded-lg">
                     <h3 class="font-serif text-2xl mb-6 text-stone-800 border-b border-aeren-200 pb-4">競爭護城河</h3>
                     <ul class="space-y-6">
                         <li class="flex items-start">
@@ -298,17 +317,19 @@
                 <!-- Market & Target -->
                 <div class="flex flex-col justify-center">
                     <h3 class="font-serif text-2xl mb-6 text-stone-800">目標市場</h3>
-                    <div class="bg-stone-900 text-white p-8 rounded-lg mb-6 relative overflow-hidden">
-                        <div class="absolute right-0 top-0 opacity-10 text-9xl font-serif -mr-4 -mt-4">Target</div>
+                    <div class="bg-stone-900 text-white p-8 rounded-lg mb-6 relative overflow-hidden shadow-lg">
+                        <div class="absolute right-0 top-0 opacity-10 text-9xl font-serif -mr-4 -mt-4 pointer-events-none">Target</div>
                         <h4 class="text-xl font-bold mb-2 text-aeren-300">亞洲一線城市女性</h4>
                         <p class="mb-4">25-40 歲 | 居住於首爾、台北、東京、上海</p>
                         <p class="text-sm text-stone-300">關注環保議題、追求生活質感、有穩定消費能力。</p>
                     </div>
 
                     <h3 class="font-serif text-2xl mb-4 text-stone-800 mt-4">AEREN 定位</h3>
-                    <p class="text-lg italic text-aeren-700 border-l-4 border-aeren-500 pl-4">
-                        「專為亞洲女性設計，兼具柔美感、輕便性與完全永續性。」
-                    </p>
+                    <div class="p-6 bg-white border-l-4 border-aeren-500 rounded-r-lg shadow-sm">
+                        <p class="text-lg italic text-aeren-900">
+                            「專為亞洲女性設計，兼具柔美感、輕便性與完全永續性。」
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -365,27 +386,36 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 mb-24">
-                <div class="bg-white p-6 shadow-sm text-center">
-                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop" alt="CEO" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
+                <div class="bg-white p-6 shadow-sm text-center border border-stone-100 rounded-lg transition-transform hover:-translate-y-1 duration-300">
+                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden border-2 border-white shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="CEO" 
+                             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all"
+                             onerror="this.onerror=null; this.src='https://dummyimage.com/200x200/cccccc/666666.jpg&text=CEO';">
                     </div>
                     <h3 class="font-bold text-lg">林宜靜 / 蔡宜真</h3>
                     <p class="text-xs text-aeren-500 uppercase tracking-wider mb-3">Founder / CEO</p>
                     <p class="text-sm text-stone-500">具備韓國時尚產業背景，曾負責知名包袋品牌行銷。</p>
                 </div>
 
-                <div class="bg-white p-6 shadow-sm text-center">
-                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" alt="Design Director" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
+                <div class="bg-white p-6 shadow-sm text-center border border-stone-100 rounded-lg transition-transform hover:-translate-y-1 duration-300">
+                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden border-2 border-white shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Design Director" 
+                             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all"
+                             onerror="this.onerror=null; this.src='https://dummyimage.com/200x200/cccccc/666666.jpg&text=Design';">
                     </div>
-                    <h3 class="font-bold text-lg">簡怡雯 / 朱淳甄</h3>
+                    <h3 class="font-bold text-lg">簡怡雯 / 朱淳甄 / 許慧雯</h3>
                     <p class="text-xs text-aeren-500 uppercase tracking-wider mb-3">Design Director</p>
                     <p class="text-sm text-stone-500">旅韓資深設計師，擅長將極簡美學轉化為實體結構。</p>
                 </div>
 
-                <div class="bg-white p-6 shadow-sm text-center">
-                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1887&auto=format&fit=crop" alt="Supply Chain" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
+                <div class="bg-white p-6 shadow-sm text-center border border-stone-100 rounded-lg transition-transform hover:-translate-y-1 duration-300">
+                    <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden border-2 border-white shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Supply Chain" 
+                             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all"
+                             onerror="this.onerror=null; this.src='https://dummyimage.com/200x200/cccccc/666666.jpg&text=Supply+Chain';">
                     </div>
                     <h3 class="font-bold text-lg">黃傑</h3>
                     <p class="text-xs text-aeren-500 uppercase tracking-wider mb-3">Supply Chain Lead</p>
@@ -394,29 +424,29 @@
             </div>
 
             <!-- Investment Ask -->
-            <div class="bg-stone-900 text-white rounded-2xl p-8 md:p-12 overflow-hidden relative">
+            <div class="bg-stone-900 text-white rounded-2xl p-8 md:p-12 overflow-hidden relative shadow-2xl">
                 <div class="absolute top-0 right-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
                 <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
                     <div>
                         <h2 class="font-serif text-3xl mb-4">投資需求 (The Ask)</h2>
                         <div class="text-5xl font-bold text-aeren-300 mb-6">$500,000 <span class="text-lg text-white font-normal">USD</span></div>
                         <p class="text-stone-300 mb-6">我們尋找認同永續價值的合作夥伴，共同推動這場溫柔的革命。</p>
-                        <a href="mailto:invest@aeren.com" class="inline-block bg-white text-stone-900 px-8 py-3 font-bold hover:bg-aeren-100 transition-colors">聯繫我們</a>
+                        <a href="mailto:invest@aeren.com" class="inline-block bg-white text-stone-900 px-8 py-3 font-bold hover:bg-aeren-100 transition-colors rounded">聯繫我們</a>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm">
+                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm border border-white/10">
                             <div class="text-2xl font-bold text-aeren-300">40%</div>
                             <div class="text-sm text-stone-300">研發與採購</div>
                         </div>
-                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm">
+                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm border border-white/10">
                             <div class="text-2xl font-bold text-aeren-300">30%</div>
                             <div class="text-sm text-stone-300">品牌行銷</div>
                         </div>
-                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm">
+                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm border border-white/10">
                             <div class="text-2xl font-bold text-aeren-300">20%</div>
                             <div class="text-sm text-stone-300">供應鏈與物流</div>
                         </div>
-                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm">
+                        <div class="bg-white/10 p-4 rounded backdrop-blur-sm border border-white/10">
                             <div class="text-2xl font-bold text-aeren-300">10%</div>
                             <div class="text-sm text-stone-300">運營預備金</div>
                         </div>
